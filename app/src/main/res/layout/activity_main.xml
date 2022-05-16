@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/mToolbar"
         android:elevation="4dp"
+        app:titleTextColor="@color/white"
         app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         android:background="#FF5722"/>

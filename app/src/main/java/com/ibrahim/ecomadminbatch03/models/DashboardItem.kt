@@ -11,5 +11,6 @@ val dashboardItemList = listOf<DashboardItem>(
     DashboardItem(icon = R.drawable.view_icon, title = "View Product"),
     DashboardItem(icon = R.drawable.order_icon, title = "Order"),
     DashboardItem(icon = R.drawable.catagory_icon, title = "Category"),
-    DashboardItem(icon = R.drawable.user_icon, title = "User")
+    DashboardItem(icon = R.drawable.user_icon, title = "User"),
+    DashboardItem(icon = R.drawable.report_icon, title = "Report")
 )
