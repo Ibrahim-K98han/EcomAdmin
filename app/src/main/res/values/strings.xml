@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EcomAdminBatch03</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_email_address">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+</resources>
