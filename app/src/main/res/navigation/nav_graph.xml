@@ -31,16 +31,16 @@
     <fragment
         android:id="@+id/addProductFragment2"
         android:name="com.ibrahim.ecomadminbatch03.AddProductFragment"
-        android:label="fragment_add_product"
+        android:label="Add Product"
         tools:layout="@layout/fragment_add_product" />
     <fragment
         android:id="@+id/categoryFragment2"
         android:name="com.ibrahim.ecomadminbatch03.CategoryFragment"
-        android:label="fragment_category"
+        android:label="Category"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/viewProductFragment2"
         android:name="com.ibrahim.ecomadminbatch03.ViewProductFragment"
-        android:label="fragment_view_product"
+        android:label="View Product"
         tools:layout="@layout/fragment_view_product" />
 </navigation>
