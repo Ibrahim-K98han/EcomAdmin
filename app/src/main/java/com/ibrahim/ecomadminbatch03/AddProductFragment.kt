@@ -18,6 +18,7 @@ import androidx.fragment.app.activityViewModels
 import com.google.firebase.Timestamp
 import com.ibrahim.ecomadminbatch03.customdialogs.DatePickerFragment
 import com.ibrahim.ecomadminbatch03.databinding.FragmentAddProductBinding
+import com.ibrahim.ecomadminbatch03.models.Product
 import com.ibrahim.ecomadminbatch03.utils.getFormattedDate
 import com.ibrahim.ecomadminbatch03.vidwmodels.ProductViewModel
 
@@ -68,8 +69,45 @@ class AddProductFragment : Fragment() {
         binding.captureBtn.setOnClickListener {
             dispatchTakePictureIntent()
         }
+        binding.saveBtn.setOnClickListener {
+            saveProdutc()
+        }
 
         return binding.root
+    }
+
+    private fun saveProdutc() {
+        val name = binding.nameInputET.text.toString()
+        val description = binding.descriptionInputET.text.toString()
+        val purchasePrice = binding.purchasePriceInputET.text.toString()
+        val salePrice = binding.salePriceInputET.text.toString()
+        val quantity = binding.quantityInputET.text.toString()
+
+        if(name.isEmpty()){
+          return error("Please Enter Product Name")
+        }
+        if(description.isEmpty()){
+            return error("Please Enter Product Description")
+        }
+        if(purchasePrice.isEmpty()){
+            return error("Please Enter Purchase Price")
+        }
+        if(salePrice.isEmpty()){
+            return error("Please Enter Sale Price")
+        }
+        if(quantity.isEmpty()){
+            return error("Please Enter Quantity")
+        }
+        productViewModel.uploadImage(bitmap!!){
+            imageUrl = it
+        }
+        val product = Product(
+            name = name,
+            description = description,
+            salePrice = salePrice.toDouble(),
+            category = category,
+
+        )
     }
 
     val resultLauncher = registerForActivityResult(
