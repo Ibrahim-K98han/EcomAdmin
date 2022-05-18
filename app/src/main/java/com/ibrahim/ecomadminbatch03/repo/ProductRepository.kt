@@ -26,6 +26,21 @@ class ProductRepository {
             callback("Failure")
         }
     }
+    fun getAllProducts():LiveData<List<Product>>{
+        val productLD = MutableLiveData<List<Product>>()
+        db.collection(collectionProduct)
+            .addSnapshotListener { value, error ->
+                if (error != null){
+                    return@addSnapshotListener
+                }
+                val tempList = mutableListOf<Product>()
+                for(doc in value!!.documents){
+                    doc.toObject(Product::class.java)?.let { tempList.add(it) }
+                }
+                productLD.value = tempList
+            }
+        return productLD
+    }
     fun getAllCategory():LiveData<List<String>>{
         val catLD = MutableLiveData<List<String>>()
         db.collection(collectionCategory)
