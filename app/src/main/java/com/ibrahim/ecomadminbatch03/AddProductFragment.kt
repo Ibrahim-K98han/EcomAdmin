@@ -1,13 +1,19 @@
 package com.ibrahim.ecomadminbatch03
 
 import android.R
+import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.Timestamp
 import com.ibrahim.ecomadminbatch03.customdialogs.DatePickerFragment
@@ -23,6 +29,7 @@ class AddProductFragment : Fragment() {
     private var category: String? = null
     private var timestamp:Timestamp? = null
     private var imageUrl:String? = null
+    private var bitmap:Bitmap?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +65,28 @@ class AddProductFragment : Fragment() {
             }.show(childFragmentManager,null)
         }
 
+        binding.captureBtn.setOnClickListener {
+            dispatchTakePictureIntent()
+        }
+
         return binding.root
     }
 
+    val resultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            bitmap = it.data?.extras?.get("data") as Bitmap
+            binding.productImageView.setImageBitmap(bitmap)
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            resultLauncher.launch(takePictureIntent)
+        } catch (e: ActivityNotFoundException) {
+            // display error state to the user
+        }
+    }
 
 }
