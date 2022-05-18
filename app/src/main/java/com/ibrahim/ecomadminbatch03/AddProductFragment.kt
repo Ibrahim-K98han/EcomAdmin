@@ -13,12 +13,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.Timestamp
 import com.ibrahim.ecomadminbatch03.customdialogs.DatePickerFragment
 import com.ibrahim.ecomadminbatch03.databinding.FragmentAddProductBinding
 import com.ibrahim.ecomadminbatch03.models.Product
+import com.ibrahim.ecomadminbatch03.models.Puarchase
 import com.ibrahim.ecomadminbatch03.utils.getFormattedDate
 import com.ibrahim.ecomadminbatch03.vidwmodels.ProductViewModel
 
@@ -29,7 +31,6 @@ class AddProductFragment : Fragment() {
     private lateinit var binding: FragmentAddProductBinding
     private var category: String? = null
     private var timestamp:Timestamp? = null
-    private var imageUrl:String? = null
     private var bitmap:Bitmap?=null
 
     override fun onCreateView(
@@ -42,6 +43,9 @@ class AddProductFragment : Fragment() {
                 val spAdapter = ArrayAdapter<String>(requireActivity(), R.layout.simple_spinner_dropdown_item, it)
                 binding.catSP.adapter = spAdapter
             }
+        }
+        productViewModel.errMsgLD.observe(viewLifecycleOwner){
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
 
         binding.catSP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -98,16 +102,40 @@ class AddProductFragment : Fragment() {
         if(quantity.isEmpty()){
             return error("Please Enter Quantity")
         }
+        binding.mProgressBar.visibility = View.VISIBLE
         productViewModel.uploadImage(bitmap!!){
-            imageUrl = it
+            val product = Product(
+                name = name,
+                description = description,
+                salePrice = salePrice.toDouble(),
+                category = category,
+                imageUrl = it
+                )
+            val purchase = Puarchase(
+                purchasePrice = purchasePrice.toDouble(),
+                quantity = quantity.toDouble(),
+                purchaseDate =  timestamp,
+            )
+            productViewModel.addNewProduct(product,purchase){
+                if(it == "Success"){
+                    resetFields()
+                    binding.mProgressBar.visibility = View.GONE
+                    Toast.makeText(requireActivity(), "Saved", Toast.LENGTH_SHORT).show()
+                }else{
+                    binding.mProgressBar.visibility = View.GONE
+                    Toast.makeText(requireActivity(), "Could not save", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-        val product = Product(
-            name = name,
-            description = description,
-            salePrice = salePrice.toDouble(),
-            category = category,
 
-        )
+    }
+
+    private fun resetFields() {
+        binding.nameInputET.text = null
+        binding.descriptionInputET.text = null
+        binding.purchasePriceInputET.text = null
+        binding.salePriceInputET.text = null
+        binding.quantityInputET.text = null
     }
 
     val resultLauncher = registerForActivityResult(

@@ -6,133 +6,146 @@
 
     </data>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AddProductFragment">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Category"/>
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/catSP"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/nameInputET"
-                android:background="@drawable/input_border"
-                android:padding="16dp"
-                android:hint="Product Name"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/descriptionInputET"
-                android:maxLines="3"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/input_border"
-                android:padding="16dp"
-                android:hint="Product Description"/>
-            <EditText
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/input_border"
-                android:padding="16dp"
-                android:id="@+id/purchasePriceInputET"
-                android:hint="Purchase Price"/>
-            <EditText
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/salePriceInputET"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/input_border"
-                android:padding="16dp"
-                android:hint="Sale Price"/>
-            <EditText
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/input_border"
-                android:padding="16dp"
-                android:id="@+id/quantityInputET"
-                android:hint="Quantity"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:id="@+id/dateBtn"
-                android:text="Select Purchase Date"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_button"
-                android:textStyle="bold"
-                style="@style/Widget.AppCompat.Button.Borderless"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Select Product Image"/>
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/productImageView"
-                android:scaleType="centerCrop"
-                android:src="@drawable/t_shirt"
-                android:layout_gravity="center"/>
+            android:layout_height="match_parent"
+            tools:context=".AddProductFragment">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
-                <androidx.appcompat.widget.AppCompatButton
+                android:padding="16dp"
+                android:orientation="vertical">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/captureBtn"
-                    android:text="Capture"
-                    android:background="@drawable/custom_button"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:layout_marginEnd="8dp"
-                    android:padding="15dp"
-                    android:layout_marginTop="5dp"/>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="wrap_content"
+                    android:text="Select Category"/>
+                <Spinner
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/galleryBtn"
+                    android:id="@+id/catSP"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nameInputET"
+                    android:background="@drawable/input_border"
+                    android:padding="16dp"
+                    android:hint="Product Name"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/descriptionInputET"
+                    android:maxLines="3"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_border"
+                    android:padding="16dp"
+                    android:hint="Product Description"/>
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_border"
+                    android:padding="16dp"
+                    android:id="@+id/purchasePriceInputET"
+                    android:hint="Purchase Price"/>
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/salePriceInputET"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_border"
+                    android:padding="16dp"
+                    android:hint="Sale Price"/>
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_border"
+                    android:padding="16dp"
+                    android:id="@+id/quantityInputET"
+                    android:hint="Quantity"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateBtn"
+                    android:text="Select Purchase Date"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/custom_button"
                     android:textStyle="bold"
-                    android:padding="15dp"
-                    android:text="Select from Gallery"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="8dp"/>
-            </LinearLayout>
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Select Product Image"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/productImageView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/t_shirt"
+                    android:layout_gravity="center"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/captureBtn"
+                        android:text="Capture"
+                        android:background="@drawable/custom_button"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="8dp"
+                        android:padding="15dp"
+                        android:layout_marginTop="5dp"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/galleryBtn"
+                        android:background="@drawable/custom_button"
+                        android:textStyle="bold"
+                        android:padding="15dp"
+                        android:text="Select from Gallery"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"/>
+                </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/saveBtn"
-                android:text="Save Product"
-                android:layout_gravity="center"
-                android:background="@drawable/custom_button"
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"/>
-        </LinearLayout>
-    </ScrollView>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/saveBtn"
+                    android:text="Save Product"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_button"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+        </ScrollView>
+        <ProgressBar
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:progressTint="@color/black"
+            android:id="@+id/mProgressBar"/>
+
+    </RelativeLayout>
+
 </layout>

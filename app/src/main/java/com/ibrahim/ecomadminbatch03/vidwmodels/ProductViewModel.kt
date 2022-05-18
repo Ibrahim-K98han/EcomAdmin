@@ -45,4 +45,7 @@ class ProductViewModel:ViewModel() {
             }
         }
     }
+    fun addNewProduct(product: Product,puarchase: Puarchase,callback:(String)->Unit){
+        repository.addNewProduct(product,puarchase,callback)
+    }
 }
