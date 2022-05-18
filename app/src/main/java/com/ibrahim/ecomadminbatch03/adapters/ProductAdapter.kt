@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ibrahim.ecomadminbatch03.databinding.ProductRowBinding
 import com.ibrahim.ecomadminbatch03.models.Product
 
-class ProductAdapter :ListAdapter<Product,ProductAdapter.ProductViewHolder>(ProductDiffUtil()){
+class ProductAdapter(val callback:(String)->Unit) :ListAdapter<Product,ProductAdapter.ProductViewHolder>(ProductDiffUtil()){
 
     class ProductViewHolder(val binding:ProductRowBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product: Product){
@@ -37,5 +37,8 @@ class ProductAdapter :ListAdapter<Product,ProductAdapter.ProductViewHolder>(Prod
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = getItem(position)
         holder.bind(product)
+        holder.itemView.setOnClickListener {
+            callback(product.id!!)
+        }
     }
 }

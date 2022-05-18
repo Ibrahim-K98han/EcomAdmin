@@ -50,4 +50,6 @@ class ProductViewModel:ViewModel() {
     }
 
     fun getProducts() = repository.getAllProducts()
+    fun getProductsById(id:String) = repository.getProductsById(id)
+    fun getPurchaseByProductId(id:String) = repository.getPurchaseByProductId(id)
 }

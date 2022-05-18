@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibrahim.ecomadminbatch03.adapters.ProductAdapter
 import com.ibrahim.ecomadminbatch03.databinding.FragmentViewProductBinding
@@ -21,7 +23,9 @@ class ViewProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewProductBinding.inflate(inflater,container,false)
-        val adapter = ProductAdapter()
+        val adapter = ProductAdapter{
+            findNavController().navigate(R.id.action_viewProductFragment2_to_productDetailsFragment, args = bundleOf("id" to it))
+        }
         binding.productRV.layoutManager = LinearLayoutManager(requireActivity())
         binding.productRV.adapter = adapter
         productViewModel.getProducts().observe(viewLifecycleOwner){

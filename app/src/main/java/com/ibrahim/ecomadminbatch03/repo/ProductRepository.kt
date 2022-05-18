@@ -3,6 +3,7 @@ package com.ibrahim.ecomadminbatch03.repo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.ibrahim.ecomadminbatch03.models.Product
 import com.ibrahim.ecomadminbatch03.models.Puarchase
 import com.ibrahim.ecomadminbatch03.utils.collectionCategory
@@ -41,6 +42,37 @@ class ProductRepository {
             }
         return productLD
     }
+    fun getProductsById(id:String):LiveData<Product>{
+        val productLD = MutableLiveData<Product>()
+        db.collection(collectionProduct).document(id)
+            .addSnapshotListener { value, error ->
+                if (error != null){
+                    return@addSnapshotListener
+                }
+
+                productLD.value = value?.toObject(Product::class.java)
+            }
+        return productLD
+    }
+
+    fun getPurchaseByProductId(id:String):LiveData<List<Puarchase>>{
+        val puarchaseLD = MutableLiveData<List<Puarchase>>()
+        db.collection(collectionPurchase)
+            .whereEqualTo("productId",id)
+            .addSnapshotListener { value, error ->
+                if (error != null){
+                    return@addSnapshotListener
+                }
+
+                val tempList = mutableListOf<Puarchase>()
+                for(doc in value!!.documents){
+                    doc.toObject(Puarchase::class.java)?.let { tempList.add(it) }
+                }
+                puarchaseLD.value = tempList
+            }
+        return puarchaseLD
+    }
+
     fun getAllCategory():LiveData<List<String>>{
         val catLD = MutableLiveData<List<String>>()
         db.collection(collectionCategory)
