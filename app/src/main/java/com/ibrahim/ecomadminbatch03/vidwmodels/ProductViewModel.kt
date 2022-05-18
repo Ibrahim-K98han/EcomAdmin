@@ -49,6 +49,8 @@ class ProductViewModel:ViewModel() {
         repository.addNewProduct(product,puarchase,callback)
     }
 
+    fun addRepurchase(purchase: Puarchase) = repository.addRePurchase(purchase)
+
     fun getProducts() = repository.getAllProducts()
     fun getProductsById(id:String) = repository.getProductsById(id)
     fun getPurchaseByProductId(id:String) = repository.getPurchaseByProductId(id)

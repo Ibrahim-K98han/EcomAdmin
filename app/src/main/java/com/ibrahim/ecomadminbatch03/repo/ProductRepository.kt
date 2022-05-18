@@ -27,6 +27,18 @@ class ProductRepository {
             callback("Failure")
         }
     }
+
+    fun addRePurchase(purchase: Puarchase) {
+        val purchaseDoc = db.collection(collectionPurchase).document()
+        purchase.purchaseId = purchaseDoc.id
+        purchaseDoc.set(purchase)
+            .addOnSuccessListener {
+
+            }.addOnFailureListener {
+
+            }
+    }
+
     fun getAllProducts():LiveData<List<Product>>{
         val productLD = MutableLiveData<List<Product>>()
         db.collection(collectionProduct)
