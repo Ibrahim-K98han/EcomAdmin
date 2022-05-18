@@ -9,7 +9,6 @@ import com.google.firebase.Timestamp
 import java.util.*
 
 class DatePickerFragment(val callback:(Timestamp)->Unit) :DialogFragment(),DatePickerDialog.OnDateSetListener{
-//comment
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)

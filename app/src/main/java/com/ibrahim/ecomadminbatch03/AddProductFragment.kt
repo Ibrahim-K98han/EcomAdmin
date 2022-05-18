@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
+import com.google.firebase.Timestamp
+import com.ibrahim.ecomadminbatch03.customdialogs.DatePickerFragment
 import com.ibrahim.ecomadminbatch03.databinding.FragmentAddProductBinding
+import com.ibrahim.ecomadminbatch03.utils.getFormattedDate
 import com.ibrahim.ecomadminbatch03.vidwmodels.ProductViewModel
 
 
@@ -18,6 +21,9 @@ class AddProductFragment : Fragment() {
     private val productViewModel: ProductViewModel by activityViewModels()
     private lateinit var binding: FragmentAddProductBinding
     private var category: String? = null
+    private var timestamp:Timestamp? = null
+    private var imageUrl:String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +51,13 @@ class AddProductFragment : Fragment() {
             }
 
         }
+        binding.dateBtn.setOnClickListener {
+            DatePickerFragment{
+                timestamp = it
+                binding.dateBtn.text = getFormattedDate(timestamp!!.seconds*1000,"dd/MM/yyyy")
+            }.show(childFragmentManager,null)
+        }
+
         return binding.root
     }
 
